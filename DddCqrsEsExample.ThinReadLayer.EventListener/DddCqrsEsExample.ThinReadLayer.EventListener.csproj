@@ -39,13 +39,13 @@
       <HintPath>..\packages\Newtonsoft.Json.4.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Simple.Data">
-      <HintPath>..\packages\Simple.Data.Core.0.11.2.1\lib\net40\Simple.Data.dll</HintPath>
+      <HintPath>..\packages\Simple.Data.Core.0.14.0.3\lib\net40\Simple.Data.dll</HintPath>
     </Reference>
     <Reference Include="Simple.Data.Ado">
-      <HintPath>..\packages\Simple.Data.Ado.0.11.2.1\lib\net40\Simple.Data.Ado.dll</HintPath>
+      <HintPath>..\packages\Simple.Data.Ado.0.14.0.3\lib\net40\Simple.Data.Ado.dll</HintPath>
     </Reference>
     <Reference Include="Simple.Data.SqlServer">
-      <HintPath>..\packages\Simple.Data.SqlServer.0.11.2.1\lib\net40\Simple.Data.SqlServer.dll</HintPath>
+      <HintPath>..\packages\Simple.Data.SqlServer.0.14.0.3\lib\net40\Simple.Data.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

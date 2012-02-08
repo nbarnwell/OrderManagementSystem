@@ -25,7 +25,7 @@ namespace DddCqrsEsExample
                  Component.For<IEventBus>().Instance(eventBus),
                  Component.For(typeof(IRepository<>)).ImplementedBy(typeof(RavenDbRepository<>)).LifeStyle.Transient,
                  Component.For<ICommandProcessor>().ImplementedBy<CommandProcessor>(),
-                 AllTypes.FromAssemblyInDirectory(new AssemblyFilter(".\\")).BasedOn(typeof(ICommandHandler<>)).Configure(registration => registration.LifeStyle.Transient).WithService.AllInterfaces()
+                 AllTypes.FromAssemblyInDirectory(new AssemblyFilter(".\\")).BasedOn(typeof(ICommandHandler<>)).Configure(registration => registration.LifestyleTransient()).WithService.AllInterfaces()
                  );
 
              return container;

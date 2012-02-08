@@ -39,7 +39,7 @@ namespace DddCqrsEsExample
                 answer = Console.ReadLine().Trim();
                 if (answer == "y")
                 {
-                    dynamic db = Database.OpenConnection("server=(local);database=DddCqrsEsExample_ReadStore;trusted_connection=true;");
+                    dynamic db = Database.OpenNamedConnection("ReadStore");
 
                     Console.WriteLine("Orders:");
                     foreach (var order in db.SalesOrders.All())

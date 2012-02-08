@@ -9,7 +9,7 @@ namespace DddCqrsEsExample.ThinReadLayer.EventListener
 {
     public class Denormaliser
     {
-        private static readonly dynamic _db = Database.OpenConnection("server=(local);database=DddCqrsEsExample_ReadStore;trusted_connection=true;");
+        private static readonly dynamic _db = Database.OpenNamedConnection("ReadStore");
 
         public void StoreEvent(Event evt)
         {

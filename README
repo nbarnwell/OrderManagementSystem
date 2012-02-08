@@ -1,0 +1,11 @@
+Getting Started with the Code
+-----------------------------
+
+1. Make sure all nuget packages are installed by running install-package.ps1 in PowerShell.
+2. Set "Raven/AnonymousAccess" to "All" in /Packages/RavenDB.a.b.c/server/Raven.Server.exe.config.
+3. Fire up /Packages/RavenDB.a.b.c/server/Raven.Server.exe.
+4. Open the RavenDB Management Studio by navigating to http://localhost:8080 in your browser.
+5. Create a new RavenDB database called "EventStore".
+6. Run DddCqrsEsExample.ThinReadLayer/Create.sql on a local MS SQL Server database.
+7. Configure the "ReadStore" configuration strings in the app.config files for the main app and the EventListener app to point to the newly-created MSSQL database.
+8. Set the startup projects in the solution to be the main app *and* the EventListener.
