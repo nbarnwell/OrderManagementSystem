@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Castle.Windsor;
+using Castle.Windsor.Installer;
+using DddCqrsExample.Web.Intrastructure;
 
 namespace DddCqrsExample.Web
 {
@@ -12,6 +15,15 @@ namespace DddCqrsExample.Web
 
     public class MvcApplication : System.Web.HttpApplication
     {
+        private static IWindsorContainer container;
+
+        private static void BootstrapContainer()
+        {
+            container = new WindsorContainer().Install(FromAssembly.This());
+            var controllerFactory = new WindsorControllerFactory(container.Kernel);
+            ControllerBuilder.Current.SetControllerFactory(controllerFactory);
+        }
+
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
@@ -19,6 +31,7 @@ namespace DddCqrsExample.Web
 
         public static void RegisterRoutes(RouteCollection routes)
         {
+            routes.IgnoreRoute("{*favicon}", new { favicon = @"(.*/)?favicon.ico(/.*)?" });
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
@@ -35,6 +48,13 @@ namespace DddCqrsExample.Web
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+            BootstrapContainer();
+        }
+
+        protected void Application_End()
+        {
+            container.Dispose();
         }
     }
 }
