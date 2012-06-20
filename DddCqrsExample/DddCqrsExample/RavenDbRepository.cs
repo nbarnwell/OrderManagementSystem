@@ -18,29 +18,15 @@ namespace DddCqrsExample
         {
             using (var session = _documentStore.OpenSession())
             {
-                var events = (from container in session.Query<EventContainer>()
-                              where container.Event.AggregateId == id
-                              select container.Event).ToList();
-
-                if (events.Count == 0) return null;
-
-                var result = new T();
-
-                result.ApplyAll(events);
-
-                return result;
+                return session.Load<T>(id);
             }
         }
 
         public void Save(T item)
         {
-            IEnumerable<Event> events = item.GetUncommittedEvents();
             using (var session = _documentStore.OpenSession())
             {
-                foreach (var evt in events)
-                {
-                    session.Store(new EventContainer(evt));
-                }
+                session.Store(item);
 
                 session.SaveChanges();
             }

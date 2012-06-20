@@ -4,9 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
 using DddCqrsExample.Web.Intrastructure;
+using Raven.Client;
+using Raven.Client.Document;
 
 namespace DddCqrsExample.Web
 {
@@ -20,6 +23,7 @@ namespace DddCqrsExample.Web
         private static void BootstrapContainer()
         {
             container = new WindsorContainer().Install(FromAssembly.This());
+            container.Register(Component.For<IWindsorContainer>().Instance(container));
             var controllerFactory = new WindsorControllerFactory(container.Kernel);
             ControllerBuilder.Current.SetControllerFactory(controllerFactory);
         }

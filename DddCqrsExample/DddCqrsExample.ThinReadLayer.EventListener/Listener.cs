@@ -7,7 +7,7 @@ namespace DddCqrsExample.ThinReadLayer.EventListener
 {
     public class Listener
     {
-        private const string QueueName = @".\private$\DddCqrsEsExample";
+        private const string QueueName = @".\private$\DddCqrsExample";
         private MessageQueue _listeningQueue;
 
         public void Start()

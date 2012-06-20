@@ -1,0 +1,39 @@
+﻿@model IEnumerable<DddCqrsExample.Web.Models.Shopping.AddToBasketViewModel>
+
+@{
+    ViewBag.Title = "Your Basket";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table>
+    <tr>
+        <th>
+            Description
+        </th>
+        <th>
+            Quantity
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+    </tr>
+}
+
+</table>
+
+    @using (Html.BeginForm("PlaceOrder", "Shop"))
+    {
+        <input type="submit" value="Place Order"/>
+    }
+    @using (Html.BeginForm("EmptyBasket", "Shop"))
+    {
+        <input type="submit" value="Empty Basket"/>
+    }
