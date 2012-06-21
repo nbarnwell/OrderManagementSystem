@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DddCqrsEsExample.Web")]
+[assembly: AssemblyTitle("DddCqrsExample.Web")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DddCqrsEsExample.Web")]
+[assembly: AssemblyProduct("DddCqrsExample.Web")]
 [assembly: AssemblyCopyright("Copyright ©  2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("69004f2a-cdf6-479d-94c1-28e9111716ff")]
+[assembly: Guid("9b4429be-fb47-4919-aadb-305df5fa353c")]
 
 // Version information for an assembly consists of the following four values:
 //
