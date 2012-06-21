@@ -5,7 +5,7 @@ using DddCqrsExample.Framework;
 
 namespace DddCqrsExample.ApplicationServices.Orders
 {
-    public class CreateSalesOrderCommandHandler : ICommandHandler<CreateSalesOrderCommand>
+    public class CreateSalesOrderCommandHandler : CommandHandlerBase<CreateSalesOrderCommand>
     {
         private readonly IWindsorContainer _container;
         private readonly IEventBus _eventBus;
@@ -16,7 +16,7 @@ namespace DddCqrsExample.ApplicationServices.Orders
             _eventBus = eventBus;
         }
 
-        public void Handle(CreateSalesOrderCommand command)
+        public override void Handle(CreateSalesOrderCommand command)
         {
             var repository = _container.Resolve<IRepository<SalesOrder>>();
             try

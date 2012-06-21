@@ -1,9 +1,7 @@
-using System.Collections.Generic;
-using System.Linq;
 using DddCqrsExample.Framework;
 using Raven.Client;
 
-namespace DddCqrsExample
+namespace DddCqrsExample.Web.Infrastructure
 {
     public class RavenDbRepository<T> : IRepository<T> where T : Aggregate, new()
     {

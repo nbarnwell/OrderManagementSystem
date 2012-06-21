@@ -3,7 +3,7 @@ using System.Messaging;
 using DddCqrsExample.Framework;
 using Newtonsoft.Json;
 
-namespace DddCqrsExample
+namespace DddCqrsExample.Web.Infrastructure
 {
     public class MsmqEventBus : IEventBus
     {

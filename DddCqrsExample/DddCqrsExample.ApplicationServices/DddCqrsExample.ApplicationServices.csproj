@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandHandlerBase.cs" />
     <Compile Include="Orders\AddItemsToSalesOrderCommandHandler.cs" />
     <Compile Include="Orders\CreateSalesOrderCommandHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
