@@ -202,6 +202,10 @@
     <Content Include="Views\Shared\Win.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DddCqrsEsExample.ApplicationServices\DddCqrsEsExample.ApplicationServices.csproj">
+      <Project>{9CDB8B79-C1DD-499F-B5D4-9DC7307317BC}</Project>
+      <Name>DddCqrsEsExample.ApplicationServices</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DddCqrsEsExample.Domain\DddCqrsEsExample.Domain.csproj">
       <Project>{0CF5C2BE-254B-4060-8BF0-01A7A8D2EE74}</Project>
       <Name>DddCqrsEsExample.Domain</Name>

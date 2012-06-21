@@ -1,6 +1,7 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
+using DddCqrsEsExample.ApplicationServices;
 using DddCqrsEsExample.Framework;
 
 namespace DddCqrsEsExample.Web.Infrastructure
@@ -17,7 +18,7 @@ namespace DddCqrsEsExample.Web.Infrastructure
                 );
 
             container.Register(
-                Classes.FromAssemblyNamed("DddCqrsEsExample.ApplicationServices")
+                Classes.FromAssemblyContaining(typeof(CommandHandlerBase<>))
                     .BasedOn(typeof(ICommandHandler<>))
                     .WithServiceFirstInterface()
                     .LifestylePerWebRequest()
