@@ -45,3 +45,7 @@ select * from SalesOrder
 select * from SalesOrderLine
 select * from MonthlySalesFigure
 select * from Product
+
+--truncate table salesorder
+--truncate table salesorderline
+--truncate table MonthlySalesFigure

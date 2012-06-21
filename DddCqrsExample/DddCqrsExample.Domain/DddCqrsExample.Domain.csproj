@@ -42,6 +42,7 @@
     <Compile Include="Orders\ItemsAddedToSalesOrderEvent.cs" />
     <Compile Include="Orders\SalesOrder.cs" />
     <Compile Include="Orders\SalesOrderCreatedEvent.cs" />
+    <Compile Include="Orders\SalesOrderLine.cs" />
     <Compile Include="Orders\SalesOrderStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sku.cs" />

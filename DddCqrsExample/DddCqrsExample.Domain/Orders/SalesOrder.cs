@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using DddCqrsExample.Framework;
 
 namespace DddCqrsExample.Domain.Orders
@@ -7,6 +8,13 @@ namespace DddCqrsExample.Domain.Orders
     {
         public Money OrderValue { get; private set; }
         public Money MaxCustomerOrderValue { get; private set; }
+
+        public IList<SalesOrderLine> Lines { get; private set; }
+
+        public SalesOrder()
+        {
+            Lines = new List<SalesOrderLine>();
+        }
 
         public void Create(string id, Money maxCustomerOrderValue)
         {
@@ -34,6 +42,8 @@ namespace DddCqrsExample.Domain.Orders
             }
 
             OrderValue += quantity * unitPrice;
+
+            Lines.Add(new SalesOrderLine{ Sku = sku, Quantity = quantity, UnitPrice = unitPrice });
 
             Record(new ItemsAddedToSalesOrderEvent(Id, sku, quantity, unitPrice, DateTimeOffset.Now));
         }
