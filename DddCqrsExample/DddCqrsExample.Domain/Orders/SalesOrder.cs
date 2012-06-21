@@ -10,14 +10,11 @@ namespace DddCqrsExample.Domain.Orders
 
         public void Create(string id, Money maxCustomerOrderValue)
         {
-            Record(new SalesOrderCreatedEvent(id, maxCustomerOrderValue, DateTimeOffset.Now));
-        }
+            Id = id;
+            OrderValue = new Money(0, maxCustomerOrderValue.Currency);
+            MaxCustomerOrderValue = maxCustomerOrderValue;
 
-        public void Apply(SalesOrderCreatedEvent evt)
-        {
-            Id = evt.OrderId;
-            OrderValue = new Money(0, evt.MaxCustomerOrderValue.Currency);
-            MaxCustomerOrderValue = evt.MaxCustomerOrderValue;
+            Record(new SalesOrderCreatedEvent(id, maxCustomerOrderValue, DateTimeOffset.Now));
         }
 
         public void AddItem(Sku sku, uint quantity, Money unitPrice)
@@ -36,12 +33,9 @@ namespace DddCqrsExample.Domain.Orders
                 throw new InvalidOperationException(string.Format("Adding items with value of {0} would take the current order value of {1} over the customer allowed maximum of {2}", itemsValue, OrderValue, MaxCustomerOrderValue));
             }
 
-            Record(new ItemsAddedToSalesOrderEvent(Id, sku, quantity, unitPrice, DateTimeOffset.Now));
-        }
+            OrderValue += quantity * unitPrice;
 
-        public void Apply(ItemsAddedToSalesOrderEvent evt)
-        {
-            OrderValue += evt.Quantity * evt.UnitPrice;
+            Record(new ItemsAddedToSalesOrderEvent(Id, sku, quantity, unitPrice, DateTimeOffset.Now));
         }
     }
 }

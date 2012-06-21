@@ -28,13 +28,10 @@ namespace DddCqrsExample.Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            IEnumerable<ProductListItemViewModel> productList;
             using (var readStore = _readStore.Create())
             {
-                productList = readStore.Query<ProductListItemViewModel>("SELECT Id, Description FROM Product");
+                return View(readStore.Query<ProductListItemViewModel>("SELECT Id, Description FROM Product"));
             }
-
-            return View(productList);
         }
 
         [HttpGet]
