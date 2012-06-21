@@ -5,7 +5,7 @@ using DddCqrsExample.Framework;
 using Raven.Client;
 using Raven.Client.Document;
 
-namespace DddCqrsExample.Web.Intrastructure
+namespace DddCqrsExample.Web.Infrastructure
 {
     public class DataInstaller : IWindsorInstaller
     {

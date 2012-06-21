@@ -7,7 +7,7 @@ using System.Web.Routing;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
-using DddCqrsExample.Web.Intrastructure;
+using DddCqrsExample.Web.Infrastructure;
 using Raven.Client;
 using Raven.Client.Document;
 

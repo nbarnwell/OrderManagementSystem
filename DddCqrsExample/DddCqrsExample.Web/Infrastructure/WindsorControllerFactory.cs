@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Castle.MicroKernel;
 
-namespace DddCqrsExample.Web.Intrastructure
+namespace DddCqrsExample.Web.Infrastructure
 {
     public class WindsorControllerFactory : DefaultControllerFactory
     {

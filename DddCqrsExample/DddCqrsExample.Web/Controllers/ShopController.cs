@@ -8,7 +8,7 @@ using DddCqrsExample.ApplicationServices.Orders;
 using DddCqrsExample.Domain;
 using DddCqrsExample.Domain.Orders;
 using DddCqrsExample.Framework;
-using DddCqrsExample.Web.Intrastructure;
+using DddCqrsExample.Web.Infrastructure;
 using DddCqrsExample.Web.Models.Products;
 using DddCqrsExample.Web.Models.Shopping;
 

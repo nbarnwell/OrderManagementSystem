@@ -94,12 +94,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Intrastructure\ApplicationServiceInstaller.cs" />
-    <Compile Include="Intrastructure\ControllersInstaller.cs" />
-    <Compile Include="Intrastructure\DataInstaller.cs" />
-    <Compile Include="Intrastructure\IReadStoreConnectionFactory.cs" />
-    <Compile Include="Intrastructure\ReadStoreConnectionFactory.cs" />
-    <Compile Include="Intrastructure\WindsorControllerFactory.cs" />
+    <Compile Include="Infrastructure\ApplicationServiceInstaller.cs" />
+    <Compile Include="Infrastructure\ControllersInstaller.cs" />
+    <Compile Include="Infrastructure\DataInstaller.cs" />
+    <Compile Include="Infrastructure\IReadStoreConnectionFactory.cs" />
+    <Compile Include="Infrastructure\ReadStoreConnectionFactory.cs" />
+    <Compile Include="Infrastructure\WindsorControllerFactory.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Products\ProductListItemViewModel.cs" />
     <Compile Include="Models\Shopping\AddToBasketViewModel.cs" />

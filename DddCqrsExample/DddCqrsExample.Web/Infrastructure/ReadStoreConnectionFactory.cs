@@ -2,7 +2,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace DddCqrsExample.Web.Intrastructure
+namespace DddCqrsExample.Web.Infrastructure
 {
     public class ReadStoreConnectionFactory : IReadStoreConnectionFactory
     {

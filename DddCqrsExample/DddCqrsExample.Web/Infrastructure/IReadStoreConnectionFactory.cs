@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace DddCqrsExample.Web.Intrastructure
+namespace DddCqrsExample.Web.Infrastructure
 {
     public interface IReadStoreConnectionFactory
     {
