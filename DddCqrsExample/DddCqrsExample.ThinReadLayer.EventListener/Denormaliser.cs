@@ -32,7 +32,10 @@ namespace DddCqrsExample.ThinReadLayer.EventListener
 
         public void Store(SalesOrderCreatedEvent evt)
         {
-            _db.SalesOrders.Insert(Id: evt.OrderId, OrderValue: evt.MaxCustomerOrderValue.Amount, Currency: (int)evt.MaxCustomerOrderValue.Currency);
+            _db.SalesOrders.Insert(
+            Id: evt.OrderId, 
+            OrderValue: evt.MaxCustomerOrderValue.Amount, 
+            Currency: (int)evt.MaxCustomerOrderValue.Currency);
         }
 
         public void Store(ItemsAddedToSalesOrderEvent evt)

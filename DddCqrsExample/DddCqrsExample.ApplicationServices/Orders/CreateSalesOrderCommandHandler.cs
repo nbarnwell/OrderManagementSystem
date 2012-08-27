@@ -1,5 +1,6 @@
+using System;
 using System.Collections.Generic;
-using Castle.Windsor;
+
 using DddCqrsExample.Domain.Orders;
 using DddCqrsExample.Framework;
 
@@ -7,31 +8,37 @@ namespace DddCqrsExample.ApplicationServices.Orders
 {
     public class CreateSalesOrderCommandHandler : CommandHandlerBase<CreateSalesOrderCommand>
     {
-        private readonly IWindsorContainer _container;
         private readonly IEventBus _eventBus;
 
-        public CreateSalesOrderCommandHandler(IWindsorContainer container, IEventBus eventBus)
+        private readonly IRepository<SalesOrder> _salesOrderRepository;
+
+        public CreateSalesOrderCommandHandler(IEventBus eventBus, IRepository<SalesOrder> salesOrderRepository)
         {
-            _container = container;
+            if (eventBus == null)
+            {
+                throw new ArgumentNullException("eventBus");
+            }
+            if (salesOrderRepository == null)
+            {
+                throw new ArgumentNullException("salesOrderRepository");
+            }
             _eventBus = eventBus;
+            _salesOrderRepository = salesOrderRepository;
         }
 
         public override void Handle(CreateSalesOrderCommand command)
         {
-            var repository = _container.Resolve<IRepository<SalesOrder>>();
-            try
-            {
-                var order = new SalesOrder();
-                order.Create(command.Id, command.MaxValue);
-                IEnumerable<Event> events = order.GetUncommittedEvents();
-                repository.Save(order);
-                order.AcceptUncommittedEvents();
-                _eventBus.Publish(events);
-            }
-            finally
-            {
-                _container.Release(repository);
-            }
+            var order = new SalesOrder();
+            
+            order.Create(command.Id, command.MaxValue);
+            
+            IEnumerable<Event> events = order.GetUncommittedEvents();
+            
+            _salesOrderRepository.Save(order);
+            
+            order.AcceptUncommittedEvents();
+            
+            _eventBus.Publish(events);
         }
     }
 }

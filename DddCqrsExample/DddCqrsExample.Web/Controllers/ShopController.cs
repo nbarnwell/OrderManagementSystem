@@ -30,7 +30,9 @@ namespace DddCqrsExample.Web.Controllers
         {
             using (var readStore = _readStore.Create())
             {
-                return View(readStore.Query<ProductListItemViewModel>("SELECT Id, Description FROM Product"));
+                return View(
+                    readStore.Query<ProductListItemViewModel>(
+                    "SELECT Id, Description FROM Product"));
             }
         }
 
@@ -79,7 +81,12 @@ namespace DddCqrsExample.Web.Controllers
 
             foreach (var item in basket.GetItems())
             {
-                _commandProcessor.Process(new AddItemsToSalesOrderCommand(createSalesOrderCommand.Id, new Sku(item.Description), item.Quantity, new Money((decimal)1.25, Currency.GBP)));
+                _commandProcessor.Process(
+                    new AddItemsToSalesOrderCommand(
+                        createSalesOrderCommand.Id, 
+                        new Sku(item.Description), 
+                        item.Quantity, 
+                        new Money((decimal)1.25, Currency.GBP)));
             }
 
             basket.Clear();

@@ -23,22 +23,23 @@ namespace DddCqrsExample.ThinReadLayer.EventListener
                 {
                     _listeningQueue = new MessageQueue(QueueName);
                     _listeningQueue.ReceiveCompleted += (sender, args) =>
-                                                            {
-                                                                args.Message.Formatter = new XmlMessageFormatter(new[] { typeof(string) });
-                                                                var msg = args.Message.Body.ToString();
+                    {
+                        args.Message.Formatter = new XmlMessageFormatter(
+                            new[] { typeof(string) });
+                        var msg = args.Message.Body.ToString();
 
-                                                                Console.WriteLine("Message received:{0}", msg);
+                        Console.WriteLine("Message received:{0}", msg);
 
-                                                                var parts = msg.Split('|');
-                                                                var json = parts[0];
-                                                                var typeName = parts[1];
-                                                                var type = Type.GetType(typeName);
-                                                                var evt = (Event)JsonConvert.DeserializeObject(json, type);
+                        var parts = msg.Split('|');
+                        var json = parts[0];
+                        var typeName = parts[1];
+                        var type = Type.GetType(typeName);
+                        var evt = (Event)JsonConvert.DeserializeObject(json, type);
 
-                                                                new Denormaliser().StoreEvent(evt);
+                        new Denormaliser().StoreEvent(evt);
 
-                                                                _listeningQueue.BeginReceive();
-                                                            };
+                        _listeningQueue.BeginReceive();
+                    };
                     _listeningQueue.BeginReceive();
                 }
             }
