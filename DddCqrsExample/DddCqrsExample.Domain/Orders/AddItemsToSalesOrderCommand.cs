@@ -2,11 +2,6 @@
 {
     public class AddItemsToSalesOrderCommand
     {
-        public string Id { get; private set; }
-        public Sku Sku { get; private set; }
-        public uint Quantity { get; private set; }
-        public Money UnitPrice { get; private set; }
-
         public AddItemsToSalesOrderCommand(string id, Sku sku, uint quantity, Money unitPrice)
         {
             Id = id;
@@ -14,6 +9,11 @@
             Quantity = quantity;
             UnitPrice = unitPrice;
         }
+
+        public string Id { get; private set; }
+        public Sku Sku { get; private set; }
+        public uint Quantity { get; private set; }
+        public Money UnitPrice { get; private set; }
 
         public override string ToString()
         {

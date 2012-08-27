@@ -40,6 +40,7 @@ namespace DddCqrsExample.ThinReadLayer.EventListener
 
                         _listeningQueue.BeginReceive();
                     };
+
                     _listeningQueue.BeginReceive();
                 }
             }

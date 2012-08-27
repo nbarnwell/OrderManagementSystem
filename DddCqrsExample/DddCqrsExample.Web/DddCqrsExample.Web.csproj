@@ -103,8 +103,10 @@
     <Compile Include="Infrastructure\RavenDbRepository.cs" />
     <Compile Include="Infrastructure\ReadStoreConnectionFactory.cs" />
     <Compile Include="Infrastructure\WindsorControllerFactory.cs" />
-    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\ChangePasswordModel.cs" />
+    <Compile Include="Models\LogOnModel.cs" />
     <Compile Include="Models\Products\ProductListItemViewModel.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\Shopping\AddToBasketViewModel.cs" />
     <Compile Include="Models\Shopping\Basket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

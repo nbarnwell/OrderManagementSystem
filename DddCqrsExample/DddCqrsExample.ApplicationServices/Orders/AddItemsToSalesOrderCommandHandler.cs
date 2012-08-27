@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 using DddCqrsExample.Domain.Orders;
@@ -5,8 +6,6 @@ using DddCqrsExample.Framework;
 
 namespace DddCqrsExample.ApplicationServices.Orders
 {
-    using System;
-
     public class AddItemsToSalesOrderCommandHandler : CommandHandlerBase<AddItemsToSalesOrderCommand>
     {
         private readonly IEventBus _eventBus;
@@ -15,14 +14,8 @@ namespace DddCqrsExample.ApplicationServices.Orders
 
         public AddItemsToSalesOrderCommandHandler(IEventBus eventBus, IRepository<SalesOrder> salesOrderRepository)
         {
-            if (eventBus == null)
-            {
-                throw new ArgumentNullException("eventBus");
-            }
-            if (salesOrderRepository == null)
-            {
-                throw new ArgumentNullException("salesOrderRepository");
-            }
+            if (eventBus == null) throw new ArgumentNullException("eventBus");
+            if (salesOrderRepository == null) throw new ArgumentNullException("salesOrderRepository");
 
             _eventBus = eventBus;
             _salesOrderRepository = salesOrderRepository;

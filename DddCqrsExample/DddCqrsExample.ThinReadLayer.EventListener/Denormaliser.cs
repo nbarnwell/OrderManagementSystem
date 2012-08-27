@@ -8,7 +8,7 @@ namespace DddCqrsExample.ThinReadLayer.EventListener
 {
     public class Denormaliser
     {
-        private static readonly dynamic _db = Database.OpenNamedConnection("ReadStore");
+        private static readonly dynamic __db = Database.OpenNamedConnection("ReadStore");
 
         public void StoreEvent(Event evt)
         {
@@ -32,7 +32,7 @@ namespace DddCqrsExample.ThinReadLayer.EventListener
 
         public void Store(SalesOrderCreatedEvent evt)
         {
-            _db.SalesOrders.Insert(
+            __db.SalesOrders.Insert(
             Id: evt.OrderId, 
             OrderValue: evt.MaxCustomerOrderValue.Amount, 
             Currency: (int)evt.MaxCustomerOrderValue.Currency);
@@ -40,17 +40,17 @@ namespace DddCqrsExample.ThinReadLayer.EventListener
 
         public void Store(ItemsAddedToSalesOrderEvent evt)
         {
-            _db.SalesOrderLines.Insert(SalesOrderId: evt.OrderId, Sku: evt.Sku, Quantity: evt.Quantity, UnitPrice: evt.UnitPrice.Amount, Currency: (int)evt.UnitPrice.Currency);
+            __db.SalesOrderLines.Insert(SalesOrderId: evt.OrderId, Sku: evt.Sku, Quantity: evt.Quantity, UnitPrice: evt.UnitPrice.Amount, Currency: (int)evt.UnitPrice.Currency);
 
-            var monthlySalesRow = _db.MonthlySalesFigures.FindByYearAndMonthAndCurrency(evt.Date.Year, evt.Date.Month, evt.UnitPrice.Currency);
+            var monthlySalesRow = __db.MonthlySalesFigures.FindByYearAndMonthAndCurrency(evt.Date.Year, evt.Date.Month, evt.UnitPrice.Currency);
             if (monthlySalesRow != null)
             {
                 monthlySalesRow.Amount += evt.UnitPrice.Amount * evt.Quantity;
-                _db.MonthlySalesFigures.UpdateByYearAndMonthAndCurrency(monthlySalesRow);
+                __db.MonthlySalesFigures.UpdateByYearAndMonthAndCurrency(monthlySalesRow);
             }
             else
             {
-                _db.MonthlySalesFigures.Insert(Year: evt.Date.Year, Month: evt.Date.Month, Amount: evt.UnitPrice.Amount * evt.Quantity, Currency: evt.UnitPrice.Currency);
+                __db.MonthlySalesFigures.Insert(Year: evt.Date.Year, Month: evt.Date.Month, Amount: evt.UnitPrice.Amount * evt.Quantity, Currency: evt.UnitPrice.Currency);
             }
         }
     }

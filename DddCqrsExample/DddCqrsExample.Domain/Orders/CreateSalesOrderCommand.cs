@@ -5,14 +5,14 @@ namespace DddCqrsExample.Domain.Orders
 {
     public class CreateSalesOrderCommand : Command
     {
-        public string Id { get; private set; }
-        public Money MaxValue { get; private set; }
-
         public CreateSalesOrderCommand(Money maxValue)
         {
             Id = Guid.NewGuid().ToString();
             MaxValue = maxValue;
         }
+
+        public string Id { get; private set; }
+        public Money MaxValue { get; private set; }
 
         protected override string GetMessageText()
         {

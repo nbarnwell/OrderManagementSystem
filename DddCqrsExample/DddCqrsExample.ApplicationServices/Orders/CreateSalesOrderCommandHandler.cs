@@ -14,14 +14,9 @@ namespace DddCqrsExample.ApplicationServices.Orders
 
         public CreateSalesOrderCommandHandler(IEventBus eventBus, IRepository<SalesOrder> salesOrderRepository)
         {
-            if (eventBus == null)
-            {
-                throw new ArgumentNullException("eventBus");
-            }
-            if (salesOrderRepository == null)
-            {
-                throw new ArgumentNullException("salesOrderRepository");
-            }
+            if (eventBus == null) throw new ArgumentNullException("eventBus");
+            if (salesOrderRepository == null) throw new ArgumentNullException("salesOrderRepository");
+
             _eventBus = eventBus;
             _salesOrderRepository = salesOrderRepository;
         }

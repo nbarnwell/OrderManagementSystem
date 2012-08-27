@@ -2,12 +2,14 @@ namespace DddCqrsExample.Domain
 {
     public class Sku
     {
-        public string Value { get; set; }
-
         public Sku(string value)
         {
             Value = value;
         }
+
+        public string Value { get; set; }
+
+        #region R# equality implementation
 
         public bool Equals(Sku other)
         {
@@ -39,6 +41,8 @@ namespace DddCqrsExample.Domain
             return !Equals(left, right);
         }
 
+        #endregion
+        
         public override string ToString()
         {
             return Value;

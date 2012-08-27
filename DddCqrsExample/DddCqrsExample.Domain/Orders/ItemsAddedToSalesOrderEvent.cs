@@ -5,11 +5,6 @@ namespace DddCqrsExample.Domain.Orders
 {
     public class ItemsAddedToSalesOrderEvent : Event
     {
-        public string OrderId { get; private set; }
-        public Sku Sku { get; private set; }
-        public uint Quantity { get; private set; }
-        public Money UnitPrice { get; private set; }
-
         public ItemsAddedToSalesOrderEvent(string orderId, Sku sku, uint quantity, Money unitPrice, DateTimeOffset date)
             : base(orderId, date)
         {
@@ -22,6 +17,11 @@ namespace DddCqrsExample.Domain.Orders
             Quantity = quantity;
             UnitPrice = unitPrice;
         }
+
+        public string OrderId { get; private set; }
+        public Sku Sku { get; private set; }
+        public uint Quantity { get; private set; }
+        public Money UnitPrice { get; private set; }
 
         protected override string GetMessageText()
         {

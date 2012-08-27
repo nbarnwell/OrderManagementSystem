@@ -2,10 +2,15 @@ namespace DddCqrsExample.Domain.Orders
 {
     public class SalesOrderLine
     {
-        public Sku Sku { get; set; }
+        public SalesOrderLine(Sku sku, uint quantity, Money unitPrice)
+        {
+            Sku = sku;
+            Quantity = quantity;
+            UnitPrice = unitPrice;
+        }
 
-        public uint Quantity { get; set; }
-
-        public Money UnitPrice { get; set; }
+        public Sku Sku { get; private set; }
+        public uint Quantity { get; private set; }
+        public Money UnitPrice { get; private set; }
     }
 }

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Caching;
 using System.Web.Mvc;
 using Dapper;
-using DddCqrsExample.ApplicationServices.Orders;
 using DddCqrsExample.Domain;
 using DddCqrsExample.Domain.Orders;
 using DddCqrsExample.Framework;
@@ -42,11 +40,12 @@ namespace DddCqrsExample.Web.Controllers
             string description;
             using (var readStore = _readStore.Create())
             {
-                IEnumerable<ProductListItemViewModel> productList = readStore.Query<ProductListItemViewModel>("SELECT Id, Description FROM Product WHERE Id = @Id", new { Id = id });
+                IEnumerable<ProductListItemViewModel> productList = readStore.Query<ProductListItemViewModel>(
+                    "SELECT Id, Description FROM Product WHERE Id = @Id", new { Id = id });
                 description = productList.Single().Description;
             }
 
-            return View(new AddToBasketViewModel {Id = id, Description = description });
+            return View(new AddToBasketViewModel { Id = id, Description = description });
         }
 
         [HttpPost]
@@ -57,7 +56,14 @@ namespace DddCqrsExample.Web.Controllers
             if (basket == null)
             {
                 basket = new Basket();
-                HttpContext.Cache.Add("basket", basket, null, Cache.NoAbsoluteExpiration, Cache.NoSlidingExpiration, CacheItemPriority.Normal, null);
+                HttpContext.Cache.Add(
+                    "basket",
+                    basket,
+                    null,
+                    Cache.NoAbsoluteExpiration,
+                    Cache.NoSlidingExpiration,
+                    CacheItemPriority.Normal,
+                    null);
             }
 
             basket.AddItem(model);
