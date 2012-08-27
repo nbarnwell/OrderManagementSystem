@@ -6,13 +6,6 @@ namespace DddExample.Domain.SalesOrders
 {
     public class SalesOrder
     {
-        public CustomerId CustomerId { get; private set; }
-        public SalesOrderId Id { get; private set; }
-        public SalesOrderStatus Status { get; private set; }
-        public Address Address { get; private set; }
-        public decimal TotalValue { get; private set; }
-        public decimal MaxValue { get; private set; }
-
         private readonly IList<SalesOrderLine> _lines;
 
         public SalesOrder()
@@ -20,6 +13,13 @@ namespace DddExample.Domain.SalesOrders
             _lines = new List<SalesOrderLine>();
         }
 
+        public CustomerId CustomerId { get; private set; }
+        public SalesOrderId Id { get; private set; }
+        public SalesOrderStatus Status { get; private set; }
+        public Address Address { get; private set; }
+        public decimal TotalValue { get; private set; }
+        public decimal MaxValue { get; private set; }
+        
         public IEnumerable<SalesOrderLine> Lines
         {
             get { return _lines; }
@@ -78,7 +78,7 @@ namespace DddExample.Domain.SalesOrders
                 line.AddQuantity(quantity);
             }
 
-            TotalValue += (quantity * itemValue);
+            TotalValue += quantity * itemValue;
         }
     }
 }

@@ -2,11 +2,23 @@ namespace DddExample.Domain.SalesOrders
 {
     public class SalesOrderId
     {
-        public int Value { get; private set; }
-
         public SalesOrderId(int value)
         {
             Value = value;
+        }
+
+        public int Value { get; private set; }
+
+        #region R# equality implementation
+        
+        public static bool operator ==(SalesOrderId left, SalesOrderId right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(SalesOrderId left, SalesOrderId right)
+        {
+            return !Equals(left, right);
         }
 
         public bool Equals(SalesOrderId other)
@@ -29,14 +41,6 @@ namespace DddExample.Domain.SalesOrders
             return Value;
         }
 
-        public static bool operator ==(SalesOrderId left, SalesOrderId right)
-        {
-            return Equals(left, right);
-        }
-
-        public static bool operator !=(SalesOrderId left, SalesOrderId right)
-        {
-            return !Equals(left, right);
-        }
+        #endregion
     }
 }

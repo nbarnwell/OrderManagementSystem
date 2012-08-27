@@ -2,13 +2,25 @@ namespace DddExample.Domain.SalesOrders
 {
     public class PostalCode
     {
-        public string Outcode { get; private set; }
-        public string Incode { get; private set; }
-
         public PostalCode(string outcode, string incode)
         {
             Outcode = outcode;
             Incode = incode;
+        }
+
+        public string Outcode { get; private set; }
+        public string Incode { get; private set; }
+
+        #region R# equality implementation
+
+        public static bool operator ==(PostalCode left, PostalCode right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(PostalCode left, PostalCode right)
+        {
+            return !Equals(left, right);
         }
 
         public bool Equals(PostalCode other)
@@ -30,18 +42,11 @@ namespace DddExample.Domain.SalesOrders
         {
             unchecked
             {
-                return ((Outcode != null ? Outcode.GetHashCode() : 0)*397) ^ (Incode != null ? Incode.GetHashCode() : 0);
+                return ((Outcode != null ? Outcode.GetHashCode() : 0) * 397) ^ (Incode != null ? Incode.GetHashCode() : 0);
             }
         }
 
-        public static bool operator ==(PostalCode left, PostalCode right)
-        {
-            return Equals(left, right);
-        }
+        #endregion
 
-        public static bool operator !=(PostalCode left, PostalCode right)
-        {
-            return !Equals(left, right);
-        }
     }
 }

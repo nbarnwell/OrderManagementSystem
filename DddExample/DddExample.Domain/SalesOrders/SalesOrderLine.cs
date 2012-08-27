@@ -2,16 +2,23 @@ namespace DddExample.Domain.SalesOrders
 {
     public class SalesOrderLine
     {
-        public uint Quantity { get; private set; }
-        public ProductId ProductId { get; private set; }
-        public decimal ItemValue { get; private set; }
-
         public SalesOrderLine(uint quantity, ProductId productId, decimal itemValue)
         {
             Quantity = quantity;
             ProductId = productId;
             ItemValue = itemValue;
         }
+
+        public uint Quantity { get; private set; }
+        public ProductId ProductId { get; private set; }
+        public decimal ItemValue { get; private set; }
+
+        public void AddQuantity(uint quantity)
+        {
+            Quantity += quantity;
+        }
+
+        #region R# equality implementation
 
         public bool Equals(SalesOrderLine other)
         {
@@ -33,8 +40,8 @@ namespace DddExample.Domain.SalesOrders
             unchecked
             {
                 int result = Quantity.GetHashCode();
-                result = (result*397) ^ (ProductId != null ? ProductId.GetHashCode() : 0);
-                result = (result*397) ^ ItemValue.GetHashCode();
+                result = (result * 397) ^ (ProductId != null ? ProductId.GetHashCode() : 0);
+                result = (result * 397) ^ ItemValue.GetHashCode();
                 return result;
             }
         }
@@ -49,9 +56,6 @@ namespace DddExample.Domain.SalesOrders
             return !Equals(left, right);
         }
 
-        public void AddQuantity(uint quantity)
-        {
-            Quantity += quantity;
-        }
+        #endregion
     }
 }

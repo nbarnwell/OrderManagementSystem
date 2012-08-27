@@ -2,16 +2,18 @@ namespace DddExample.Domain.SalesOrders
 {
     public class Address
     {
-        public string Line1 { get; private set; }
-        public string Town { get; private set; }
-        public PostalCode PostalCode { get; private set; }
-
         public Address(string line1, string town, PostalCode postalCode)
         {
             Line1 = line1;
             Town = town;
             PostalCode = postalCode;
         }
+
+        public string Line1 { get; private set; }
+        public string Town { get; private set; }
+        public PostalCode PostalCode { get; private set; }
+
+        #region R# equality implementation
 
         public bool Equals(Address other)
         {
@@ -33,8 +35,8 @@ namespace DddExample.Domain.SalesOrders
             unchecked
             {
                 int result = (Line1 != null ? Line1.GetHashCode() : 0);
-                result = (result*397) ^ (Town != null ? Town.GetHashCode() : 0);
-                result = (result*397) ^ (PostalCode != null ? PostalCode.GetHashCode() : 0);
+                result = (result * 397) ^ (Town != null ? Town.GetHashCode() : 0);
+                result = (result * 397) ^ (PostalCode != null ? PostalCode.GetHashCode() : 0);
                 return result;
             }
         }
@@ -48,5 +50,8 @@ namespace DddExample.Domain.SalesOrders
         {
             return !Equals(left, right);
         }
+
+        #endregion
+
     }
 }

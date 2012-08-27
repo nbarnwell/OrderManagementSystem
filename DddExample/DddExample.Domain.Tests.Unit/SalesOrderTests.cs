@@ -87,7 +87,7 @@ namespace DddExample.Domain.Tests.Unit
             order.Cancel();
 
             // Act / Assert
-            Assert.Throws<InvalidOperationException>(() => order.Cancel());
+            Assert.Throws<InvalidOperationException>(order.Cancel);
         }
     }
 }
