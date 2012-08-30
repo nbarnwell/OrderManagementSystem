@@ -12,6 +12,8 @@ using DddCqrsExample.Web.Models.Shopping;
 
 namespace DddCqrsExample.Web.Controllers
 {
+    using System.Data;
+
     public class ShopController : Controller
     {
         private readonly IReadStoreConnectionFactory _readStore;
@@ -26,7 +28,7 @@ namespace DddCqrsExample.Web.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            using (var readStore = _readStore.Create())
+            using (IDbConnection readStore = _readStore.Create())
             {
                 return View(
                     readStore.Query<ProductListItemViewModel>(
@@ -82,7 +84,8 @@ namespace DddCqrsExample.Web.Controllers
                 return View("Fail");
             }
 
-            var createSalesOrderCommand = new CreateSalesOrderCommand(new Money((decimal)7.5, Currency.GBP));
+            var createSalesOrderCommand = new CreateSalesOrderCommand(
+                new Money((decimal)7.5, Currency.GBP));
             _commandProcessor.Process(createSalesOrderCommand);
 
             foreach (var item in basket.GetItems())
