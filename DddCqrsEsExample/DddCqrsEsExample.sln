@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{801447
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DddCqrsEsExample.ThinReadLayer.Core", "DddCqrsEsExample.ThinReadLayer.Core\DddCqrsEsExample.ThinReadLayer.Core.csproj", "{3E905F9E-4B01-4413-8E33-548CBFBF06EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,6 +80,16 @@ Global
 		{52A33557-0B9D-4256-B692-83324A6A09EB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{52A33557-0B9D-4256-B692-83324A6A09EB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{52A33557-0B9D-4256-B692-83324A6A09EB}.Release|x86.ActiveCfg = Release|Any CPU
+		{3E905F9E-4B01-4413-8E33-548CBFBF06EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E905F9E-4B01-4413-8E33-548CBFBF06EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E905F9E-4B01-4413-8E33-548CBFBF06EA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3E905F9E-4B01-4413-8E33-548CBFBF06EA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{3E905F9E-4B01-4413-8E33-548CBFBF06EA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3E905F9E-4B01-4413-8E33-548CBFBF06EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E905F9E-4B01-4413-8E33-548CBFBF06EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E905F9E-4B01-4413-8E33-548CBFBF06EA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{3E905F9E-4B01-4413-8E33-548CBFBF06EA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{3E905F9E-4B01-4413-8E33-548CBFBF06EA}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

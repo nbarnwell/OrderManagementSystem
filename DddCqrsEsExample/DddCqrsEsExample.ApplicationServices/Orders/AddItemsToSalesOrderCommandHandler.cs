@@ -40,7 +40,7 @@ namespace DddCqrsEsExample.ApplicationServices.Orders
 
             order.AcceptUncommittedEvents();
 
-            _eventBus.Send(events);
+            _eventBus.Publish(events);
         }
     }
 }

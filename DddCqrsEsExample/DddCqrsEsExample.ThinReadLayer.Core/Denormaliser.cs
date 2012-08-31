@@ -1,11 +1,10 @@
-using System.Dynamic;
 using System.Linq;
 using System.Reflection;
 using DddCqrsEsExample.Domain.Orders;
 using DddCqrsEsExample.Framework;
 using Simple.Data;
 
-namespace DddCqrsEsExample.ThinReadLayer.EventListener
+namespace DddCqrsEsExample.ThinReadLayer.Core
 {
     public class Denormaliser
     {

@@ -9,7 +9,7 @@ namespace DddCqrsEsExample.Web.Infrastructure
     {
         private const string QueueName = @".\private$\DddCqrsEsExample";
 
-        public void Send<TEvent>(TEvent evt) where TEvent : Event
+        public void Publish<TEvent>(TEvent evt) where TEvent : Event
         {
             if (!MessageQueue.Exists(QueueName))
             {
@@ -24,11 +24,11 @@ namespace DddCqrsEsExample.Web.Infrastructure
             }
         }
 
-        public void Send<TEvent>(IEnumerable<TEvent> events) where TEvent : Event
+        public void Publish<TEvent>(IEnumerable<TEvent> events) where TEvent : Event
         {
             foreach (var evt in events)
             {
-                Send(evt);
+                Publish(evt);
             }
         }
     }

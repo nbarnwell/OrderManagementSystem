@@ -98,6 +98,7 @@
     <Compile Include="Infrastructure\ApplicationServiceInstaller.cs" />
     <Compile Include="Infrastructure\ControllersInstaller.cs" />
     <Compile Include="Infrastructure\DataInstaller.cs" />
+    <Compile Include="Infrastructure\InProcessEventBus.cs" />
     <Compile Include="Infrastructure\IReadStoreConnectionFactory.cs" />
     <Compile Include="Infrastructure\MsmqEventBus.cs" />
     <Compile Include="Infrastructure\RavenDbRepository.cs" />
@@ -214,6 +215,10 @@
       <Project>{C1B082A2-0640-4803-B2B0-2A111A898D6D}</Project>
       <Name>DddCqrsEsExample.Framework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DddCqrsEsExample.ThinReadLayer.Core\DddCqrsEsExample.ThinReadLayer.Core.csproj">
+      <Project>{3E905F9E-4B01-4413-8E33-548CBFBF06EA}</Project>
+      <Name>DddCqrsEsExample.ThinReadLayer.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -232,7 +237,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>52123</DevelopmentServerPort>
+          <DevelopmentServerPort>65163</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

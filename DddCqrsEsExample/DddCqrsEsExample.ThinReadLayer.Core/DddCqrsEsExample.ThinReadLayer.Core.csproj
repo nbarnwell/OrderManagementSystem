@@ -2,23 +2,20 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{425909EC-31D8-47F3-B309-99F072759B78}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{3E905F9E-4B01-4413-8E33-548CBFBF06EA}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DddCqrsEsExample.ThinReadLayer.EventListener</RootNamespace>
-    <AssemblyName>DddCqrsEsExample.ThinReadLayer.EventListener</AssemblyName>
+    <RootNamespace>DddCqrsEsExample.ThinReadLayer.Core</RootNamespace>
+    <AssemblyName>DddCqrsEsExample.ThinReadLayer.Core</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -27,8 +24,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -37,21 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.8\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Simple.Data">
-      <HintPath>..\packages\Simple.Data.Core.0.14.0.3\lib\net40\Simple.Data.dll</HintPath>
+      <HintPath>..\packages\Simple.Data.Core.0.17.0.0\lib\net40\Simple.Data.dll</HintPath>
     </Reference>
     <Reference Include="Simple.Data.Ado">
-      <HintPath>..\packages\Simple.Data.Ado.0.14.0.3\lib\net40\Simple.Data.Ado.dll</HintPath>
+      <HintPath>..\packages\Simple.Data.Ado.0.17.0.0\lib\net40\Simple.Data.Ado.dll</HintPath>
     </Reference>
     <Reference Include="Simple.Data.SqlServer">
-      <HintPath>..\packages\Simple.Data.SqlServer.0.14.0.3\lib\net40\Simple.Data.SqlServer.dll</HintPath>
+      <HintPath>..\packages\Simple.Data.SqlServer.0.17.0.0\lib\net40\Simple.Data.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Messaging" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,12 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Listener.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Denormaliser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -75,10 +65,6 @@
     <ProjectReference Include="..\DddCqrsEsExample.Framework\DddCqrsEsExample.Framework.csproj">
       <Project>{C1B082A2-0640-4803-B2B0-2A111A898D6D}</Project>
       <Name>DddCqrsEsExample.Framework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DddCqrsEsExample.ThinReadLayer.Core\DddCqrsEsExample.ThinReadLayer.Core.csproj">
-      <Project>{3E905F9E-4B01-4413-8E33-548CBFBF06EA}</Project>
-      <Name>DddCqrsEsExample.ThinReadLayer.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
