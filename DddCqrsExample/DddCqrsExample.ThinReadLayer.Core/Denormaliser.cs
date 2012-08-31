@@ -4,7 +4,7 @@ using DddCqrsExample.Domain.Orders;
 using DddCqrsExample.Framework;
 using Simple.Data;
 
-namespace DddCqrsExample.ThinReadLayer.EventListener
+namespace DddCqrsExample.ThinReadLayer.Core
 {
     public class Denormaliser
     {

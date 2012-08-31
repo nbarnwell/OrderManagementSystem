@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Messaging;
 using DddCqrsExample.Framework;
+using DddCqrsExample.ThinReadLayer.Core;
 using Newtonsoft.Json;
 
 namespace DddCqrsExample.ThinReadLayer.EventListener

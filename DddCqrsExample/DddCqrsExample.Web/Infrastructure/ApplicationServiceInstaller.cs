@@ -12,9 +12,7 @@ namespace DddCqrsExample.Web.Infrastructure
         {
             container.Register(
                 Component.For<ICommandProcessor>()
-                    .ImplementedBy<CommandProcessor>(),
-                Component.For<IEventBus>()
-                    .ImplementedBy<MsmqEventBus>()
+                    .ImplementedBy<CommandProcessor>()
                 );
 
             container.Register(
@@ -23,6 +21,16 @@ namespace DddCqrsExample.Web.Infrastructure
                     .WithServiceFirstInterface()
                     .LifestylePerWebRequest()
                 );
+
+            container.Register(
+                Component.For<IEventBus>()
+                    .ImplementedBy<MsmqEventBus>()
+                );
+
+            //container.Register(
+            //    Component.For<IEventBus>()
+            //        .ImplementedBy<InProcessEventBus>()
+            //    );
         }
     }
 }

@@ -98,6 +98,7 @@
     <Compile Include="Infrastructure\ApplicationServiceInstaller.cs" />
     <Compile Include="Infrastructure\ControllersInstaller.cs" />
     <Compile Include="Infrastructure\DataInstaller.cs" />
+    <Compile Include="Infrastructure\InProcessEventBus.cs" />
     <Compile Include="Infrastructure\IReadStoreConnectionFactory.cs" />
     <Compile Include="Infrastructure\MsmqEventBus.cs" />
     <Compile Include="Infrastructure\RavenDbRepository.cs" />
@@ -212,6 +213,10 @@
     <ProjectReference Include="..\DddCqrsExample.Framework\DddCqrsExample.Framework.csproj">
       <Project>{C1B082A2-0640-4803-B2B0-2A111A898D6D}</Project>
       <Name>DddCqrsExample.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DddCqrsExample.ThinReadLayer.Core\DddCqrsExample.ThinReadLayer.Core.csproj">
+      <Project>{90BA33D4-CA8C-44D1-A520-6CE58F810400}</Project>
+      <Name>DddCqrsExample.ThinReadLayer.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
