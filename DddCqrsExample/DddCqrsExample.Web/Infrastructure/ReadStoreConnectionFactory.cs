@@ -8,7 +8,8 @@ namespace DddCqrsExample.Web.Infrastructure
     {
         public IDbConnection Create()
         {
-            var sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ReadStore"].ConnectionString);
+            var sqlConnection = new SqlConnection(
+                ConfigurationManager.ConnectionStrings["ReadStore"].ConnectionString);
             sqlConnection.Open();
             return sqlConnection;
         }

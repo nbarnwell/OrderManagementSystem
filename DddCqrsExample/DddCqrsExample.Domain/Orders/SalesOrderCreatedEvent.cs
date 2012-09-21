@@ -17,7 +17,8 @@ namespace DddCqrsExample.Domain.Orders
 
         protected override string GetMessageText()
         {
-            return string.Format("SalesOrder created with ID {0} for maximum value of {1}", OrderId, MaxCustomerOrderValue);
+            return string.Format(
+                "SalesOrder created with ID {0} for maximum value of {1}", OrderId, MaxCustomerOrderValue);
         }
     }
 }

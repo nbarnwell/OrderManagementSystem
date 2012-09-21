@@ -187,7 +187,8 @@ namespace DddCqrsExample.Domain
         {
             if (left.Currency != right.Currency)
             {
-                throw new ArithmeticException("Unable to perform arithmetic operations on Money values of different Currency.");
+                throw new ArithmeticException(
+                    "Unable to perform arithmetic operations on Money values of different Currency.");
             }
         }
     }

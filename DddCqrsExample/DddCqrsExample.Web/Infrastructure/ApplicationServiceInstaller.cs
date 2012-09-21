@@ -1,4 +1,6 @@
-﻿using Castle.MicroKernel.Registration;
+﻿using System.Linq;
+using System.ServiceProcess;
+using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using DddCqrsExample.ApplicationServices;
@@ -22,15 +24,20 @@ namespace DddCqrsExample.Web.Infrastructure
                     .LifestylePerWebRequest()
                 );
 
-            container.Register(
-                Component.For<IEventBus>()
-                    .ImplementedBy<MsmqEventBus>()
-                );
-
-            //container.Register(
-            //    Component.For<IEventBus>()
-            //        .ImplementedBy<InProcessEventBus>()
-            //    );
+            if (ServiceController.GetServices().Any(o => o.ServiceName == "MSMQ"))
+            {
+                container.Register(
+                    Component.For<IEventBus>()
+                        .ImplementedBy<MsmqEventBus>()
+                    );
+            }
+            else
+            {
+                container.Register(
+                    Component.For<IEventBus>()
+                        .ImplementedBy<InProcessEventBus>()
+                    );
+            }
         }
     }
 }

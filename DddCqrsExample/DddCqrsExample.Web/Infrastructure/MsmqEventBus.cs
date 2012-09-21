@@ -20,7 +20,10 @@ namespace DddCqrsExample.Web.Infrastructure
             {
                 q.DefaultPropertiesToSend.Recoverable = true;
 
-                q.Send(JsonConvert.SerializeObject(evt, Formatting.Indented) + "|" + evt.GetType().AssemblyQualifiedName);
+                q.Send(
+                    JsonConvert.SerializeObject(
+                        evt,
+                        Formatting.Indented) + "|" + evt.GetType().AssemblyQualifiedName);
             }
         }
 

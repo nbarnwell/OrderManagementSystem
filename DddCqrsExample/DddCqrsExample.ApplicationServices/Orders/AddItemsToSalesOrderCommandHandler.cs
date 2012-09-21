@@ -27,13 +27,11 @@ namespace DddCqrsExample.ApplicationServices.Orders
             
             order.AddItem(command.Sku, command.Quantity, command.UnitPrice);
             
-            IEnumerable<Event> events = order.GetUncommittedEvents();
-            
             _salesOrderRepository.Save(order);
             
-            order.AcceptUncommittedEvents();
-            
-            _eventBus.Publish(events);
+            _eventBus.Publish(
+                new ItemsAddedToSalesOrderEvent(
+                    order.Id, command.Sku, command.Quantity, command.UnitPrice, DateTimeOffset.Now));
         }
     }
 }

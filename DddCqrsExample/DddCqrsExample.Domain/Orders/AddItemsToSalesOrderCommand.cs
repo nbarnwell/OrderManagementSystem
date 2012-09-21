@@ -17,7 +17,12 @@
 
         public override string ToString()
         {
-            return string.Format("AddItemsToSalesOrder - Id: {0}, Sku: {1}, Quantity: {2}, UnitPrice: {3}", Id, Sku, Quantity, UnitPrice);
+            return string.Format(
+                "AddItemsToSalesOrder - Id: {0}, Sku: {1}, Quantity: {2}, UnitPrice: {3}", 
+                Id, 
+                Sku, 
+                Quantity, 
+                UnitPrice);
         }
     }
 }

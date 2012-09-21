@@ -5,7 +5,12 @@ namespace DddCqrsExample.Domain.Orders
 {
     public class ItemsAddedToSalesOrderEvent : Event
     {
-        public ItemsAddedToSalesOrderEvent(string orderId, Sku sku, uint quantity, Money unitPrice, DateTimeOffset date)
+        public ItemsAddedToSalesOrderEvent(
+            string orderId, 
+            Sku sku, 
+            uint quantity, 
+            Money unitPrice, 
+            DateTimeOffset date)
             : base(orderId, date)
         {
             if (orderId == null) throw new ArgumentNullException("orderId");
@@ -25,7 +30,12 @@ namespace DddCqrsExample.Domain.Orders
 
         protected override string GetMessageText()
         {
-            return string.Format("{0} item(s) (SKU: {1}, unit price: {2}) added to sales order {3} ", Quantity, Sku, UnitPrice, OrderId);
+            return string.Format(
+                "{0} item(s) (SKU: {1}, unit price: {2}) added to sales order {3} ", 
+                Quantity, 
+                Sku, 
+                UnitPrice, 
+                OrderId);
         }
     }
 }

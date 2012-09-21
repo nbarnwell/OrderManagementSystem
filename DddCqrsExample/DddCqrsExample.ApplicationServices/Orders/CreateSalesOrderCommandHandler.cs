@@ -27,13 +27,9 @@ namespace DddCqrsExample.ApplicationServices.Orders
             
             order.Create(command.Id, command.MaxValue);
             
-            IEnumerable<Event> events = order.GetUncommittedEvents();
-            
             _salesOrderRepository.Save(order);
-            
-            order.AcceptUncommittedEvents();
-            
-            _eventBus.Publish(events);
+
+            _eventBus.Publish(new SalesOrderCreatedEvent(command.Id, command.MaxValue, DateTimeOffset.Now));
         }
     }
 }
