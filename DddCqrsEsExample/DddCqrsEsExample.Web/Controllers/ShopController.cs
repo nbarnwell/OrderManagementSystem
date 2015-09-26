@@ -15,19 +15,19 @@ namespace DddCqrsEsExample.Web.Controllers
 {
     public class ShopController : Controller
     {
-        private readonly IReadStoreConnectionFactory _readStore;
+        private readonly IReadStoreConnectionFactory _readStoreConnectionFactory;
         private readonly ICommandProcessor _commandProcessor;
 
-        public ShopController(IReadStoreConnectionFactory readStore, ICommandProcessor commandProcessor)
+        public ShopController(IReadStoreConnectionFactory readStoreConnectionFactory, ICommandProcessor commandProcessor)
         {
-            _readStore = readStore;
+            _readStoreConnectionFactory = readStoreConnectionFactory;
             _commandProcessor = commandProcessor;
         }
 
         [HttpGet]
         public ActionResult Index()
         {
-            using (var readStore = _readStore.Create())
+            using (var readStore = _readStoreConnectionFactory.Create())
             {
                 return View(readStore.Query<ProductListItemViewModel>("SELECT Id, Description FROM Product"));
             }
@@ -37,7 +37,7 @@ namespace DddCqrsEsExample.Web.Controllers
         public ActionResult AddToBasket(string id)
         {
             string description;
-            using (var readStore = _readStore.Create())
+            using (var readStore = _readStoreConnectionFactory.Create())
             {
                 IEnumerable<ProductListItemViewModel> productList = readStore.Query<ProductListItemViewModel>("SELECT Id, Description FROM Product WHERE Id = @Id", new { Id = id });
                 description = productList.Single().Description;
@@ -99,6 +99,18 @@ namespace DddCqrsEsExample.Web.Controllers
 
             basket.Clear();
             return RedirectToAction("Index");
+        }
+
+        protected override void OnException(ExceptionContext filterContext)
+        {
+            if (filterContext.ExceptionHandled)
+            {
+                return;
+            }
+
+            TempData.Add("message", filterContext.Exception.Message);
+            filterContext.Result = View("Fail");
+            filterContext.ExceptionHandled = true;
         }
     }
 }

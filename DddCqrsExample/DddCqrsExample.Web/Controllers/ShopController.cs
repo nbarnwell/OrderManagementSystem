@@ -117,5 +117,17 @@ namespace DddCqrsExample.Web.Controllers
             basket.Clear();
             return RedirectToAction("Index");
         }
+
+        protected override void OnException(ExceptionContext filterContext)
+        {
+            if (filterContext.ExceptionHandled)
+            {
+                return;
+            }
+
+            TempData.Add("message", filterContext.Exception.Message);
+            filterContext.Result = View("Fail");
+            filterContext.ExceptionHandled = true;
+        }
     }
 }

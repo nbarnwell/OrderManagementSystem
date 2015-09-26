@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DddCqrsEsExample.Domain", "DddCqrsEsExample.Domain\DddCqrsEsExample.Domain.csproj", "{0CF5C2BE-254B-4060-8BF0-01A7A8D2EE74}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DddCqrsEsExample.Framework", "DddCqrsEsExample.Framework\DddCqrsEsExample.Framework.csproj", "{C1B082A2-0640-4803-B2B0-2A111A898D6D}"
@@ -10,13 +12,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DddCqrsEsExample.ThinReadLayer.EventListener", "DddCqrsEsExample.ThinReadLayer.EventListener\DddCqrsEsExample.ThinReadLayer.EventListener.csproj", "{425909EC-31D8-47F3-B309-99F072759B78}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DddCqrsEsExample.Web", "DddCqrsEsExample.Web\DddCqrsEsExample.Web.csproj", "{52A33557-0B9D-4256-B692-83324A6A09EB}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{80144782-0B82-4E20-B4AD-FB536EFEEC48}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DddCqrsEsExample.ThinReadLayer.Core", "DddCqrsEsExample.ThinReadLayer.Core\DddCqrsEsExample.ThinReadLayer.Core.csproj", "{3E905F9E-4B01-4413-8E33-548CBFBF06EA}"
 EndProject

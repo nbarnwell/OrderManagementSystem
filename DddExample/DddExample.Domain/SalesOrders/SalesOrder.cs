@@ -13,12 +13,12 @@ namespace DddExample.Domain.SalesOrders
             _lines = new List<SalesOrderLine>();
         }
 
-        public CustomerId CustomerId { get; private set; }
-        public SalesOrderId Id { get; private set; }
-        public SalesOrderStatus Status { get; private set; }
-        public Address Address { get; private set; }
-        public decimal TotalValue { get; private set; }
-        public decimal MaxValue { get; private set; }
+        public CustomerId       CustomerId { get; private set; }
+        public SalesOrderId     Id         { get; private set; }
+        public SalesOrderStatus Status     { get; private set; }
+        public Address          Address    { get; private set; }
+        public decimal          TotalValue { get; private set; }
+        public decimal          MaxValue   { get; private set; }
         
         public IEnumerable<SalesOrderLine> Lines
         {

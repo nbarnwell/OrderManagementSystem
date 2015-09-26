@@ -6,7 +6,7 @@ namespace DddCqrsEsExample.Web.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Welcome to The DDD + CQRS Demo App!";
+            ViewBag.Message = "Welcome to The DDD + CQRS + ES Demo App!";
 
             return View();
         }
