@@ -18,9 +18,10 @@ namespace DddCqrsEsExample.Web.Infrastructure
         {
             using (var session = _documentStore.OpenSession())
             {
-                var events = (from container in session.Query<EventContainer>()
-                              where container.Event.AggregateId == id
-                              select container.Event).ToList();
+                var events = (session.Query<EventContainer>()
+                                     .Customize(x => x.WaitForNonStaleResultsAsOfLastWrite())
+                                     .Where(container => container.Event.AggregateId == id)
+                                     .Select(container => container.Event)).ToList();
 
                 if (events.Count == 0) return null;
 
