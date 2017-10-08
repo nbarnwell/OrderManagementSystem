@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DddCqrsEsExample.Web2", "Dd
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DddCqrsEsExample.Logging", "DddCqrsEsExample.Logging\DddCqrsEsExample.Logging.csproj", "{FABA536D-7374-4FE4-83BD-95FD9F4BFC28}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DddCqrsEsExample.Monitoring", "DddCqrsEsExample.Monitoring\DddCqrsEsExample.Monitoring.csproj", "{9D3ECD71-FDFB-44D8-907F-DDED4B17BEC4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +103,18 @@ Global
 		{FABA536D-7374-4FE4-83BD-95FD9F4BFC28}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{FABA536D-7374-4FE4-83BD-95FD9F4BFC28}.Release|x86.ActiveCfg = Release|Any CPU
 		{FABA536D-7374-4FE4-83BD-95FD9F4BFC28}.Release|x86.Build.0 = Release|Any CPU
+		{9D3ECD71-FDFB-44D8-907F-DDED4B17BEC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D3ECD71-FDFB-44D8-907F-DDED4B17BEC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D3ECD71-FDFB-44D8-907F-DDED4B17BEC4}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9D3ECD71-FDFB-44D8-907F-DDED4B17BEC4}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9D3ECD71-FDFB-44D8-907F-DDED4B17BEC4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9D3ECD71-FDFB-44D8-907F-DDED4B17BEC4}.Debug|x86.Build.0 = Debug|Any CPU
+		{9D3ECD71-FDFB-44D8-907F-DDED4B17BEC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D3ECD71-FDFB-44D8-907F-DDED4B17BEC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D3ECD71-FDFB-44D8-907F-DDED4B17BEC4}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9D3ECD71-FDFB-44D8-907F-DDED4B17BEC4}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9D3ECD71-FDFB-44D8-907F-DDED4B17BEC4}.Release|x86.ActiveCfg = Release|Any CPU
+		{9D3ECD71-FDFB-44D8-907F-DDED4B17BEC4}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

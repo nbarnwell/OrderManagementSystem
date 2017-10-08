@@ -325,6 +325,10 @@
       <Project>{FABA536D-7374-4FE4-83BD-95FD9F4BFC28}</Project>
       <Name>DddCqrsEsExample.Logging</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DddCqrsEsExample.Monitoring\DddCqrsEsExample.Monitoring.csproj">
+      <Project>{9D3ECD71-FDFB-44D8-907F-DDED4B17BEC4}</Project>
+      <Name>DddCqrsEsExample.Monitoring</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DddCqrsEsExample.ThinReadLayer.Core\DddCqrsEsExample.ThinReadLayer.Core.csproj">
       <Project>{3e905f9e-4b01-4413-8e33-548cbfbf06ea}</Project>
       <Name>DddCqrsEsExample.ThinReadLayer.Core</Name>

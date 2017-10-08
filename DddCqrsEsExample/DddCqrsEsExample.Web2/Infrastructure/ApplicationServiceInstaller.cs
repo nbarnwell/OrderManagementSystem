@@ -3,6 +3,7 @@ using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using DddCqrsEsExample.ApplicationServices;
 using DddCqrsEsExample.Framework;
+using DddCqrsEsExample.Monitoring;
 
 namespace DddCqrsEsExample.Web2.Infrastructure
 {
@@ -12,25 +13,33 @@ namespace DddCqrsEsExample.Web2.Infrastructure
         {
             container.Register(
                 Component.For<ICommandProcessor>()
-                    .ImplementedBy<CommandProcessor>()
-                );
+                    .ImplementedBy<CommandProcessor>());
 
             container.Register(
                 Classes.FromAssemblyContaining(typeof(CommandHandlerBase<>))
                     .BasedOn(typeof(ICommandHandler<>))
                     .WithServiceFirstInterface()
-                    .LifestylePerWebRequest()
-                );
+                    .LifestylePerWebRequest());
+
+            container.Register(
+                Classes.FromAssemblyContaining(typeof(CommandHandlerBase<>))
+                    .BasedOn(typeof(IEventHandler<>))
+                    .WithServiceFirstInterface()
+                    .LifestylePerWebRequest());
+
+            container.Register(
+                Classes.FromAssemblyContaining(typeof(ItemsAddedToSalesOrderMonitoringEntry))
+                       .BasedOn(typeof(IEventHandler<>))
+                       .WithServiceFirstInterface()
+                       .LifestylePerWebRequest());
 
             container.Register(
                 Component.For<IEventBus>()
-                    .ImplementedBy<MsmqEventBus>()
-                );
+                    .ImplementedBy<MsmqEventBus>());
 
             //container.Register(
             //    Component.For<IEventBus>()
-            //        .ImplementedBy<InProcessEventBus>()
-            //    );
+            //        .ImplementedBy<InProcessEventBus>());
         }
     }
 }
