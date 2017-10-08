@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DddCqrsEsExample.Domain", "DddCqrsEsExample.Domain\DddCqrsEsExample.Domain.csproj", "{0CF5C2BE-254B-4060-8BF0-01A7A8D2EE74}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DddCqrsEsExample.Web", "DddCqrsEsExample.Web\DddCqrsEsExample.Web.csproj", "{52A33557-0B9D-4256-B692-83324A6A09EB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DddCqrsEsExample.ThinReadLayer.Core", "DddCqrsEsExample.ThinReadLayer.Core\DddCqrsEsExample.ThinReadLayer.Core.csproj", "{3E905F9E-4B01-4413-8E33-548CBFBF06EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DddCqrsEsExample.Web2", "DddCqrsEsExample.Web2\DddCqrsEsExample.Web2.csproj", "{6ECC591E-CB7D-47B6-BDE2-8D90A4EB10CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,6 +87,18 @@ Global
 		{3E905F9E-4B01-4413-8E33-548CBFBF06EA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{3E905F9E-4B01-4413-8E33-548CBFBF06EA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{3E905F9E-4B01-4413-8E33-548CBFBF06EA}.Release|x86.ActiveCfg = Release|Any CPU
+		{6ECC591E-CB7D-47B6-BDE2-8D90A4EB10CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ECC591E-CB7D-47B6-BDE2-8D90A4EB10CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ECC591E-CB7D-47B6-BDE2-8D90A4EB10CC}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{6ECC591E-CB7D-47B6-BDE2-8D90A4EB10CC}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{6ECC591E-CB7D-47B6-BDE2-8D90A4EB10CC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6ECC591E-CB7D-47B6-BDE2-8D90A4EB10CC}.Debug|x86.Build.0 = Debug|Any CPU
+		{6ECC591E-CB7D-47B6-BDE2-8D90A4EB10CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ECC591E-CB7D-47B6-BDE2-8D90A4EB10CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6ECC591E-CB7D-47B6-BDE2-8D90A4EB10CC}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{6ECC591E-CB7D-47B6-BDE2-8D90A4EB10CC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{6ECC591E-CB7D-47B6-BDE2-8D90A4EB10CC}.Release|x86.ActiveCfg = Release|Any CPU
+		{6ECC591E-CB7D-47B6-BDE2-8D90A4EB10CC}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
