@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Caching;
 using System.Web.Mvc;
@@ -9,6 +10,7 @@ using DddCqrsEsExample.Framework;
 using DddCqrsEsExample.Web2.Infrastructure;
 using DddCqrsEsExample.Web2.Models.Products;
 using DddCqrsEsExample.Web2.Models.Shopping;
+using Inforigami.Regalo.Core;
 
 namespace DddCqrsEsExample.Web2.Controllers
 {
@@ -16,11 +18,20 @@ namespace DddCqrsEsExample.Web2.Controllers
     {
         private readonly IReadStoreConnectionFactory _readStoreConnectionFactory;
         private readonly ICommandProcessor _commandProcessor;
+        private readonly ILogger _logger;
 
-        public ShopController(IReadStoreConnectionFactory readStoreConnectionFactory, ICommandProcessor commandProcessor)
+        public ShopController(
+            IReadStoreConnectionFactory readStoreConnectionFactory,
+            ICommandProcessor commandProcessor,
+            ILogger logger)
         {
+            if (readStoreConnectionFactory == null) throw new ArgumentNullException(nameof(readStoreConnectionFactory));
+            if (commandProcessor == null) throw new ArgumentNullException(nameof(commandProcessor));
+            if (logger == null) throw new ArgumentNullException(nameof(logger));
+
             _readStoreConnectionFactory = readStoreConnectionFactory;
             _commandProcessor = commandProcessor;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -117,6 +128,8 @@ namespace DddCqrsEsExample.Web2.Controllers
             {
                 return;
             }
+
+            _logger.Error(this, filterContext.Exception, "Failed!");
 
             TempData.Add("message", filterContext.Exception.Message);
             filterContext.Result = View("Fail");

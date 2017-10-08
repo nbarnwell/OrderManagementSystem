@@ -9,6 +9,7 @@ using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
 using DddCqrsEsExample.Web2.Infrastructure;
+using Inforigami.Regalo.Core;
 
 namespace DddCqrsEsExample.Web2
 {
@@ -24,10 +25,31 @@ namespace DddCqrsEsExample.Web2
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             BootstrapContainer();
+
+            var logger = container.Resolve<ILogger>();
+            logger.Debug(this, "Application Start");
+        }
+
+        protected void Application_BeginRequest(object sender, EventArgs e)
+        {
+            var logger = container.Resolve<ILogger>();
+            var request = HttpContext.Current.Request;
+            logger.Debug(this, $"Application BeginRequest {request.HttpMethod} {request.Path}");
+        }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            var logger = container.Resolve<ILogger>();
+            Exception exception = Server.GetLastError();
+            var request = HttpContext.Current.Request;
+            logger.Error(this, exception, $"Application Error {request.HttpMethod} {request.Path}");
         }
 
         protected void Application_End()
         {
+            var logger = container.Resolve<ILogger>();
+            logger.Debug(this, "Application End");
+
             container.Dispose();
         }
 
