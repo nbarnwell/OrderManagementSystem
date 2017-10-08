@@ -44,6 +44,14 @@
       <HintPath>..\packages\Castle.Windsor.3.0.0.4001\lib\net40\Castle.Windsor.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Inforigami.Regalo.Core, Version=0.18.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Inforigami.Regalo.Core.0.18.0\lib\net40-client\Inforigami.Regalo.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Inforigami.Regalo.Interfaces, Version=0.18.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Inforigami.Regalo.Interfaces.0.18.0\lib\portable40-net40+win8+wpa81\Inforigami.Regalo.Interfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
