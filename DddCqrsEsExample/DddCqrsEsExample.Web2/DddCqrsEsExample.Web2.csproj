@@ -228,7 +228,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Products\ProductListItemViewModel.cs" />
+    <Compile Include="Models\Products\ProductSearchResult.cs" />
     <Compile Include="Models\Shopping\AddToBasketViewModel.cs" />
     <Compile Include="Models\Shopping\Basket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -238,6 +238,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\So-close.png" />
+    <Content Include="Content\sweets.jpg" />
     <Content Include="Content\Win.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

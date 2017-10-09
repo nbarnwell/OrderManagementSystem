@@ -1,12 +1,23 @@
-﻿@model IEnumerable<DddCqrsEsExample.Web2.Models.Products.ProductListItemViewModel>
+﻿@model IEnumerable<DddCqrsEsExample.Web2.Models.Products.ProductSearchResult>
 
 @{
-    ViewBag.Title = "All Products";
+    ViewBag.Title = "Products";
 }
 
 <h2>@ViewBag.Title</h2>
+<div>
+    @using (Html.BeginForm("Index", "Shop", System.Web.Mvc.FormMethod.Get, new { @class = "form-inline" }))
+    {
+        <div class="form-group">
+            <label for="search" class="sr-only">Search</label>
+            <input class="form-control" id="search" name="search" value="@ViewBag.ProductSearch" />
+        </div>
+        <button type="submit" class="btn btn-default">Search</button>
+    }
+</div>
 
-<table class="table">
+@if (Model != null) {
+<table class="table move-down">
     <tr>
         <th>
             Description
@@ -14,21 +25,17 @@
         <th>
             Price
         </th>
-        <th></th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.ActionLink("Add to Basket", "AddToBasket", new { id=item.Id })
-        </td>
+ @foreach (var item in Model) {
+     <tr>
+         <td>
+             @Html.ActionLink(item.Description, "AddToBasket", new {id = item.Id})
+         </td>
+         <td>
+             @Html.DisplayFor(modelItem => item.Price)
+         </td>
     </tr>
+ }
+</table>
 }
 
-</table>

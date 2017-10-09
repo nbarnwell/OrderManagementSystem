@@ -4,6 +4,7 @@ using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using DddCqrsEsExample.Logging;
 using DddCqrsEsExample.Monitoring;
+using DddCqrsEsExample.Web2.Models.Products;
 using Elasticsearch.Net;
 using Nest;
 
@@ -22,7 +23,9 @@ namespace DddCqrsEsExample.Web2.Infrastructure
                 {
                     d.Add(typeof(LogEntry), "logentries");
                     d.Add(typeof(ItemsAddedToSalesOrderMonitoringEntry), "orderactivity");
-                });
+                    d.Add(typeof(ProductSearchResult), "products");
+                })
+                              .DefaultFieldNameInferrer(p => p);
 
             var es = new ElasticClient(connectionSettings);
 

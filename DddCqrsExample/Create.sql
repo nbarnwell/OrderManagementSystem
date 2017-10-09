@@ -1,7 +1,7 @@
 create database DddCqrsExample_ReadStore
 go
 
-use DddCqrsExample_ReadStore
+use DddCqrsEsExample_ReadStore
 go
 
 create table SalesOrder (
@@ -41,10 +41,15 @@ insert into Product (Id, Description, Amount, Currency) values (newid(), '100g p
 insert into Product (Id, Description, Amount, Currency) values (newid(), '100g packet Pear Drops', 1.25, 51)
 insert into Product (Id, Description, Amount, Currency) values (newid(), '100g packet Rhubarb and Custard', 1.25, 51)
 
+select 'PUT products/productsearchresult/' + Id  + ' { "Id": "' + Id + '", "Description": "' + Description + '", "Price": ' + cast(Amount as varchar(32)) + ' }' from Product;
+
 select * from SalesOrder
 select * from SalesOrderLine
 select * from MonthlySalesFigure
 select * from Product
+
+
+
 
 --truncate table salesorder
 --truncate table salesorderline

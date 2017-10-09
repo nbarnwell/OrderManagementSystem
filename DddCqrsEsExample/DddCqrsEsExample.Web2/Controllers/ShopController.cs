@@ -11,36 +11,57 @@ using DddCqrsEsExample.Web2.Infrastructure;
 using DddCqrsEsExample.Web2.Models.Products;
 using DddCqrsEsExample.Web2.Models.Shopping;
 using Inforigami.Regalo.Core;
+using Nest;
 
 namespace DddCqrsEsExample.Web2.Controllers
 {
     public class ShopController : Controller
     {
         private readonly IReadStoreConnectionFactory _readStoreConnectionFactory;
+        private readonly IElasticClient _elastic;
         private readonly ICommandProcessor _commandProcessor;
         private readonly ILogger _logger;
 
         public ShopController(
             IReadStoreConnectionFactory readStoreConnectionFactory,
+            IElasticClient elastic,
             ICommandProcessor commandProcessor,
             ILogger logger)
         {
             if (readStoreConnectionFactory == null) throw new ArgumentNullException(nameof(readStoreConnectionFactory));
+            if (elastic == null) throw new ArgumentNullException(nameof(elastic));
             if (commandProcessor == null) throw new ArgumentNullException(nameof(commandProcessor));
             if (logger == null) throw new ArgumentNullException(nameof(logger));
 
             _readStoreConnectionFactory = readStoreConnectionFactory;
+            _elastic = elastic;
             _commandProcessor = commandProcessor;
             _logger = logger;
         }
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(string search = null)
         {
-            using (var readStore = _readStoreConnectionFactory.Create())
+            if (!string.IsNullOrWhiteSpace(search))
             {
-                return View(readStore.Query<ProductListItemViewModel>("SELECT Id, Description, Amount as Price FROM Product"));
+                var results =
+                    _elastic.Search<ProductSearchResult>(
+                        p => p.Query(
+                            q => q.Match(
+                                m => m.Field(f => f.Description)
+                                      .Query(search))));
+
+                ViewBag.ProductSearch = search;
+
+                return View(results.Documents);
             }
+
+            return View();
+
+            //using (var readStore = _readStoreConnectionFactory.Create())
+            //{
+            //    return View(readStore.Query<ProductSearchResult>("SELECT Id, Description, Amount as Price FROM Product"));
+            //}
         }
 
         [HttpGet]
@@ -49,7 +70,7 @@ namespace DddCqrsEsExample.Web2.Controllers
             using (var readStore = _readStoreConnectionFactory.Create())
             {
                 var vm =
-                    readStore.Query<ProductListItemViewModel>(
+                    readStore.Query<ProductSearchResult>(
                         "SELECT Id, Description, Amount as Price FROM Product WHERE Id = @Id",
                         new {Id = id})
                              .Select(

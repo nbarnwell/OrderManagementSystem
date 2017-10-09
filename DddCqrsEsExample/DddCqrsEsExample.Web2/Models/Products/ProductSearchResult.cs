@@ -1,6 +1,6 @@
 ﻿namespace DddCqrsEsExample.Web2.Models.Products
 {
-    public class ProductListItemViewModel
+    public class ProductSearchResult
     {
         public string Id { get; set; }
         public string Description { get; set; }

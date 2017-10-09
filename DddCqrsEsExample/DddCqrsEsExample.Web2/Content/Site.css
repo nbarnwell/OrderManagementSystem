@@ -22,3 +22,16 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.move-down {
+    margin-top: 10px;
+}
+
+.jumbotron-sweets {
+    background-image: url('sweets.jpg');
+    background-repeat: no-repeat;
+}
+
+.jumbotron-sweets > div.well {
+   background-color: rgba(255, 255, 255, 0.6);
+}
