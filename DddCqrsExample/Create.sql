@@ -41,14 +41,12 @@ insert into Product (Id, Description, Amount, Currency) values (newid(), '100g p
 insert into Product (Id, Description, Amount, Currency) values (newid(), '100g packet Pear Drops', 1.25, 51)
 insert into Product (Id, Description, Amount, Currency) values (newid(), '100g packet Rhubarb and Custard', 1.25, 51)
 
-select 'PUT products/productsearchresult/' + Id  + ' { "Id": "' + Id + '", "Description": "' + Description + '", "Price": ' + cast(Amount as varchar(32)) + ' }' from Product;
+select 'curl -XPUT "http://localhost:9200/products/productsearchresult/' + Id  + '" -H "Content-Type: application/json" -d''{ "Id": "' + Id + '", "Description": "' + Description + '", "Price": ' + cast(Amount as varchar(32)) + ' }''' from Product;
 
 select * from SalesOrder
 select * from SalesOrderLine
 select * from MonthlySalesFigure
 select * from Product
-
-
 
 
 --truncate table salesorder
